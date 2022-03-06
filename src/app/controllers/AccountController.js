@@ -121,7 +121,7 @@ const AccountController = {
                 req.session.isAdmin = true
             }
 
-            const url = req.query.reURL || '/account/profile'
+            const url = req.query.reURL || '/'
             res.redirect(url)
 
         } catch (err) {

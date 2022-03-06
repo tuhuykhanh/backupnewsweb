@@ -1,3 +1,4 @@
+const hiddenblock = document.querySelector('.search-form-hidden')
 //header scroll 
 var lastscrolltop = 0;
 var header = document.querySelector('.header .top')
@@ -48,28 +49,19 @@ navbtn.forEach(item => {
     }
 })
 
-//search click
-const searchBtn = document.querySelector('.top .control .search-btn')
-const formSearch = document.querySelector('.top .search-form')
-const closeBtnSearch = document.querySelector('.top .search-form .container-form .fa-times')
-const inputSearch = document.querySelector('.top .search-form .container-form form input')
 
-///test
-// searchBtn.onclick = () =>
-// {
-//     formSearch.classList.add('active');
-//     searchBtn.classList.add('active');
-//     inputSearch.focus();
-// }
-closeBtnSearch.onclick = () => {
-    formSearch.classList.remove('active')
-    searchBtn.classList.remove('active');
+const categoryBtn = document.querySelector('.icon-home-bars')  ? document.querySelector('.icon-home-bars') : hiddenblock
 
+const boxCate = document.querySelector('.container-li');
+
+
+categoryBtn.onclick =() => 
+{   
+    boxCate.classList.toggle('active')
 }
 
-window.onscroll = () => {
-    formSearch.classList.remove('active')
-}
+
+
 
 
 //theme control
@@ -86,7 +78,6 @@ lightBtn.onclick = () => {
 
     document.body.setAttribute('class', '')
     document.body.classList.add('light-mode');
-
 
 
 }
@@ -383,24 +374,22 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 ///socket io 
 let socket = io()
 
-const inputCmt = document.querySelector('.contentcomment');
+const inputCmt = document.querySelector('.contentcomment') ? document.querySelector('.contentcomment') : darkBtn;
 
 const slug = window.location.href.split('/').slice(-1)[0];
 const email = document.querySelector('#getemail') ? document.querySelector('#getemail').innerText.trim() : '';
 const username = document.querySelector('.info-user .name') ? document.querySelector('.info-user .name').innerText : '';
 
-const sendBtn = document.querySelector('.btn-send-comment');
+const sendBtn = document.querySelector('.btn-send-comment') ? document.querySelector('.btn-send-comment') : darkBtn;
 const commentBox = document.querySelector('.comments-box');
 
 const avatasrc = document.querySelector('.info-user .image img') ? document.querySelector('.info-user .image img').src.split('/').slice(3,5).join('/') : '';
 
 inputCmt.onclick =()=> {
-
     if(username === '')
     {
         myFunction()
     }
-
 }
 function myFunction() {
     let text = "please login to comment !";
