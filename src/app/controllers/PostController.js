@@ -11,20 +11,25 @@ const PostController = {
 
     postDetail: async (req, res, next) => {
 
-        const post = await PostModel.findOne({ slug: req.params.slug })
-            .populate('user category')
+        try {
+            const post = await PostModel.findOne({ slug: req.params.slug })
+                .populate('user category')
 
-        await PostModel.findOneAndUpdate({ slug: req.params.slug }, { views: post.views + 1 })
+            await PostModel.findOneAndUpdate({ slug: req.params.slug }, { views: post.views + 1 })
 
-        const postscates = await PostModel.find({ category: post.category })
-        
-        const comments = await CommentModel.find({idpost: post._id}).populate('iduser idpost')
+            const postscates = await PostModel.find({ category: post.category })
 
-        await res.render('post/postDetail', {
-            post: mongooseToObject(post),
-            postscates: mutipleMongooseToObject(postscates),
-            comments: mutipleMongooseToObject(comments)
-        })
+            const comments = await CommentModel.find({ idpost: post._id }).populate('iduser idpost')
+
+            await res.render('post/postDetail', {
+                post: mongooseToObject(post),
+                postscates: mutipleMongooseToObject(postscates),
+                comments: mutipleMongooseToObject(comments)
+            })
+
+        } catch (error) {
+            return res.status(500).json({ msg: error.message })
+        }
 
     },
     getvalue: async (req, res, next) => {

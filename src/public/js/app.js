@@ -61,45 +61,50 @@ categoryBtn.onclick =() =>
 }
 
 
-
-
-
 //theme control
 
-const darkBtn = document.querySelector('.top .control .interface .control .dark')
-const lightBtn = document.querySelector('.top .control .interface .control .light')
-const defaultBtn = document.querySelector('.top .control .interface .control .default')
-const activeBtn = document.querySelectorAll('.top .control .interface .control .themeBtn.active')
+// check for saved 'darkMode' in localStorage
+let darkMode = localStorage.getItem('darkMode'); 
 
-lightBtn.onclick = () => {
+const darkModeToggle = document.querySelector('.interface');
 
-    document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
-    lightBtn.classList.add('active')
-
-    document.body.setAttribute('class', '')
-    document.body.classList.add('light-mode');
-
-
+const enableDarkMode = () => {
+  // 1. Add the class to the body
+  document.body.classList.add('dark-mode');
+  // 2. Update darkMode in localStorage
+  localStorage.setItem('darkMode', 'enabled');
 }
-defaultBtn.onclick = () => {
 
-    document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
-    defaultBtn.classList.add('active')
-
-    document.body.setAttribute('class', '')
-
-
+const disableDarkMode = () => {
+  // 1. Remove the class from the body
+  document.body.classList.remove('dark-mode');
+  // 2. Update darkMode in localStorage 
+  localStorage.setItem('darkMode', null);
 }
-darkBtn.onclick = () => {
-
-    document.querySelector('.top .control .interface .control .themeBtn.active').classList.remove('active')
-
-    document.body.setAttribute('class', '')
-    document.body.classList.add('dark-mode');
-
-    darkBtn.classList.add('active')
-
+ 
+// If the user already visited and enabled darkMode
+// start things off with it on
+if (darkMode === 'enabled') {
+  enableDarkMode();
 }
+
+// When someone clicks the button
+darkModeToggle.addEventListener('click', () => {
+    
+    darkModeToggle.classList.toggle('fa-sun')
+  // get their darkMode setting
+  darkMode = localStorage.getItem('darkMode'); 
+  
+  // if it not current enabled, enable it
+  if (darkMode !== 'enabled') {
+    enableDarkMode();
+  // if it has been enabled, turn it off  
+  } else {  
+    disableDarkMode(); 
+  }
+});
+
+
 
 
 ///toast message
@@ -374,13 +379,13 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 ///socket io 
 let socket = io()
 
-const inputCmt = document.querySelector('.contentcomment') ? document.querySelector('.contentcomment') : darkBtn;
+const inputCmt = document.querySelector('.contentcomment') ? document.querySelector('.contentcomment') : hiddenblock;
 
 const slug = window.location.href.split('/').slice(-1)[0];
 const email = document.querySelector('#getemail') ? document.querySelector('#getemail').innerText.trim() : '';
 const username = document.querySelector('.info-user .name') ? document.querySelector('.info-user .name').innerText : '';
 
-const sendBtn = document.querySelector('.btn-send-comment') ? document.querySelector('.btn-send-comment') : darkBtn;
+const sendBtn = document.querySelector('.btn-send-comment') ? document.querySelector('.btn-send-comment') : hiddenblock;
 const commentBox = document.querySelector('.comments-box');
 
 const avatasrc = document.querySelector('.info-user .image img') ? document.querySelector('.info-user .image img').src.split('/').slice(3,5).join('/') : '';

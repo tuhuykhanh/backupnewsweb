@@ -42,6 +42,7 @@ app.use(session({
     { mongoUrl: 'mongodb://localhost:27017/review_site_db' }
     )
   }));
+  
 app.use(checkAuthen.checkLocalAuthen);
 app.use(cors());
 
