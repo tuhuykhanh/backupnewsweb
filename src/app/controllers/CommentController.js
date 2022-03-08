@@ -50,6 +50,7 @@ const CommentController = {
             
         }
     },
+    ///admin delete ////
     delcomment: async (req,res) => {
         try {
                 const cmtid = req.params.id
@@ -58,6 +59,18 @@ const CommentController = {
 
         } catch (error) {
 
+            return res.status(500).json({ msg: error.message })
+            
+        }
+    },
+    ///user delete ///
+    deletecomment: async (req,res) => {
+        try {
+
+            const id = req.params.id
+            await CommentModel.deleteOne({_id: id})
+
+        } catch (error) {
             return res.status(500).json({ msg: error.message })
             
         }

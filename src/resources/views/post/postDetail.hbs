@@ -52,45 +52,54 @@
 
         <div class="comments-box">
             {{#each comments}}
-                <div class="box">
-                    <div class="avata">
-                        <img src="/{{this.iduser.avatar}}"
-                            alt="cmtuser">
-                    </div>
-
-                    <div class="content">
-
-                        <div class="username">
-                            <h3>{{this.iduser.username}}</h3>
-                            <smal class="time">{{this.time}}</smal>
-                        </div>
-                        <p>{{this.content}}</p>
-                        <p class="data-email">{{this.iduser.email}}</p>
-                    </div>
-                    
-
+            <div class="box box-item-{{this._id}}">
+                <div class="avata">
+                    <img src="/{{this.iduser.avatar}}" alt="cmtuser">
                 </div>
-            {{/each}}
-                <div class="box box-comment">
-                    <div class="avata">
-                        <img src="https://images.unsplash.com/photo-1638913971251-832d29947de6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-                            alt="">
+
+                <div class="content">
+
+                    <div class="username">
+                        <h3>{{this.iduser.username}}</h3>
+                        <smal class="time">{{this.time}}</smal>
                     </div>
-                    <div class="content">
-                        <div class="username">
-                            <h3>khanh huy</h3>
-                            <smal class="time">9 pm</smal>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis consequuntur quidem officia earum, suscipit hic non deserunt impedit aspernatur iusto saepe inventore repellat dolores minus doloremque voluptas dicta placeat. Dolores?</p>
-                    </div>
-                    <div class="controls">
+                    <p>{{this.content}}</p>
+                    <p class="data-email">{{this.iduser.email}}</p>
+                    <button value="{{this.iduser.email}}" class="controls threedos-btn" id="{{this._id}}">
                         <i class="fa-solid fa-ellipsis"></i>
 
-                        <div class="dropdown">
-                            <div class="delete">delete</div>
-                        </div> 
+                        <div class="dropdown" data-id="{{this._id}}">
+                            <div onclick="deletecmt(`{{this._id}}`)" class="delete">delete</div>
+                        </div>
+                    </button>
+
+                </div>
+
+
+            </div>
+            {{/each}}
+            {{!-- <div class="box box-comment">
+                <div class="avata">
+                    <img src="https://images.unsplash.com/photo-1638913971251-832d29947de6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                        alt="">
+                </div>
+                <div class="content">
+                    <div class="username">
+                        <h3>khanh huy</h3>
+                        <smal class="time">9 pm</smal>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis consequuntur quidem officia earum,
+                        suscipit hic non deserunt impedit aspernatur iusto saepe inventore repellat dolores minus
+                        doloremque voluptas dicta placeat. Dolores?</p>
+                </div>
+                <div class="controls">
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                    <div class="dropdown">
+                        <div class="delete">delete</div>
                     </div>
                 </div>
+            </div> --}}
         </div>
         <div class="ontyping">
             <p></p>
@@ -131,7 +140,8 @@
 
 <script>
 
-        
-       
+
+ 
+
 
 </script>

@@ -406,15 +406,17 @@ function myFunction() {
     
 }
 
-
 sendBtn.onclick = (e) => {
     let comment = inputCmt.value
     if (!comment) {
         return
     }
+    if(username === '')
+    {
+        return
+    }
     postComment(comment)
 
-    //socket.emit('client-send-cmt', comment)
 }
 function postComment(cmt) {
     let data = {
@@ -450,6 +452,7 @@ function appendToDom(data) {
                 </div> `
     box.innerHTML = html
     commentBox.appendChild(box)
+    
 }
 function socketsendcmt(data) {
     socket.emit('comment', data)
@@ -479,6 +482,7 @@ socket.on('usertyping', function (data) {
 })
 
 function syncWithDb(data) {
+    
     const headers = {
         'Content-Type': 'application/json'
     }
@@ -491,5 +495,69 @@ function syncWithDb(data) {
             console.log(err)
         })
 }
+
+
+
+
+
+           
+/// click delete comment
+
+const threedogs = document.querySelectorAll('.threedos-btn')
+const boxdrops = document.querySelectorAll('.dropdown')
+
+threedogs.forEach( result => {
+    
+    const id = result.id
+    result.onclick =()=>{
+        if(result.value === email)
+        {   
+           const acc = document.querySelector(`div[data-id="${id}"]`)
+            if(acc)
+            {
+                acc.classList.toggle('active')
+            }   
+        }
+    }
+})
+
+const deletecmt = (id)=> {
+
+    removeCmtFromDom(id)
+    socketsenddelecmt(id)
+    deleteCmtDb(id)
+}
+
+function deleteCmtDb(id) {
+    
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+    fetch(`/api/deletecmt/${id}`, { method: 'Post', headers})
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+}
+function removeCmtFromDom(id){
+
+    let boxCmt = document.querySelector(`.box-item-${id}`)
+
+    if(boxCmt)
+    {
+        boxCmt.remove();
+    }
+
+}
+function socketsenddelecmt(id) {
+    socket.emit('deletecomment', id)
+}
+socket.on('deletecommentserver' ,function(id){
+    removeCmtFromDom(id)
+})
+
 
 

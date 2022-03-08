@@ -72,6 +72,9 @@ io.on('connection', (socket) => {
     socket.on('typing', function(data){
         socket.broadcast.emit('usertyping', data )
     })
+    socket.on('deletecomment',function(id){
+      socket.broadcast.emit('deletecommentserver', id)
+    })
 
 });
 

@@ -116,7 +116,7 @@ const AdminController = {
                 title: title.toLowerCase(), 
                 content,
                 description, 
-                thumbnail: (req.file) ? req.file.path.split('\\').slice(5,8).join('/') : 'img/thumbnail-post/defaultimg.jpg',
+                thumbnail: (req.file) ? req.file.path.split('\\').slice(4,7).join('/') : 'img/thumbnail-post/defaultimg.jpg',
                 category: category
 
             })

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
+const moment = require('moment')
 
 const PostSchema = new Schema({
     user: { type: mongoose.Types.ObjectId, ref: 'users' },
@@ -35,7 +36,13 @@ const PostSchema = new Schema({
         type: Number,
         default: 0,
     },
-    category: { type: mongoose.Types.ObjectId, ref: 'categorys'}
+    category: { 
+        type: mongoose.Types.ObjectId, 
+        ref: 'categorys'},
+    date: {
+        type: String,
+        default: moment(Date.now()).format("MMM Do YY")
+    }
 }, {
     timestamps: true,
 })

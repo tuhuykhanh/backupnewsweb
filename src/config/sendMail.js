@@ -44,8 +44,8 @@ const sendEmail = (to, url, txt) => {
         html: `
             <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
             <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the huy khanh web.</h2>
-            <p>Congratulations! You're almost set to start using account.
-                Just click the button below to validate your email address.
+            <p>
+                Just click the button below check your email address.
             </p>
             
             <a href=${url} style="background: #20BF55;border-radius:.5rem; text-decoration: none; color: white; padding: 10px 20px; margin: 10px 0; display: inline-block;">${txt}</a>

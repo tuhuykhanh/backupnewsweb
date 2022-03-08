@@ -161,7 +161,6 @@ const AccountController = {
     activeMail: async (req, res, nex) => {
         try {
 
-
             const token = req.params.token
 
             const user = jwt.verify(token, process.env.ACTIVATION_TOKEN_SECRET)
