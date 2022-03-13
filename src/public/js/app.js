@@ -498,8 +498,6 @@ function syncWithDb(data) {
 
 
 
-
-
            
 /// click delete comment
 

@@ -13,6 +13,7 @@ function route(app) {
     app.use('/post',postRouter) 
     app.use('/c',categoryRouter)
     app.use('/api',commentRouter)
-    app.use('/',homeRouter)     
+    app.use('/',homeRouter) 
+        
 }
 module.exports = route;

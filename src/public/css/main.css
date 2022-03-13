@@ -1647,6 +1647,8 @@ body {
           font-size: 1.5rem;
           font-weight: 400;
           text-align: start; }
+        .container-comment .comments-box .box .content .data-email {
+          display: none; }
         .container-comment .comments-box .box .content .controls {
           position: absolute;
           font-size: 2rem;
