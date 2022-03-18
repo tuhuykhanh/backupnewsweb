@@ -5,6 +5,7 @@
   --btnbg-regis: #979A9A;
   --btnbg-signin: #40E0D0;
   --bgbody: #FBFBFF;
+  --title-color: #91171F;
 }
 
 .light-mode
@@ -14,8 +15,9 @@
 }
 .dark-mode
 {
-  --bgbody: #979A9A;
+  --bgbody: rgba(0,0,0,0.4);
   --bgc: #5D6D7E;
+  --title-color: #FCFAF9;
 }
 .error
 {

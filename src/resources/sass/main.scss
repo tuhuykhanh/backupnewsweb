@@ -2,6 +2,7 @@
 @import './_variable';
 @import './_Account';
 @import './Home';
+@import './PostDetail';
 
 *
 {
@@ -41,6 +42,10 @@ body
 
 .section{
     padding: 14rem 9% 5rem;
+}
+.sectionPostDetail
+{
+    padding: 14rem 22% 5rem 0;
 }
 .section-body
 {
@@ -152,41 +157,62 @@ body
             }
     .navbar
     {
-        display: flex;
-        align-items: center;
-        gap: 2.5rem;
-        position: relative;
-        a
+        position: absolute !important; 
+        top:110%; left:0; right:0 !important;
+        flex-direction: column;
+        background-color: #9FE2BF !important;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        align-items: flex-start !important;
+        padding: 5rem 2rem;
+        border-radius: 1.5rem;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        .containerCat
         {
-            font-size: 2.5rem;
-            color: var(--color)
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+
+            .cat-item
+            {
+                font-size: 2rem;
+                display: inline-block;
+                padding: .5rem 2rem;
+                border-radius: .5rem;
+                color: black;
+               
+                &:hover
+                {
+                    background-color: #575A4B;
+                    color: #fff;
+                }
+
+            }
+
         }
-        .line
+    
+        &.active
         {
-            width:0;
-            height: .5rem;
-            position:absolute;
-            background-image: linear-gradient( to right,#6a3093,#5691c8);
-            left:0;
-            bottom: 0;
-            border-radius: 10rem;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            background-color: #fff;
         }
+        // .line
+        // {
+        //     display: none;
+        // }
     }
     .btn-bars{
         width: 5rem;
         height: 4rem;
         font-size: 2.5rem;
         border-radius: .5rem;
-        display: none;
+        display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
-
         &:hover
         {
             background-color: orange;
         }
-       
     }
     .control
     {   
@@ -856,6 +882,8 @@ body
             display: flex;
             gap: 1.5rem;
             margin-top: 2rem;
+            z-index: 1;
+        
            
             &:hover .content .controls
             {
@@ -880,7 +908,8 @@ body
                 background-color: rgba(0,0,0,0.4);
                 padding: 1rem;
                 border-radius: 1rem;
-                position: relative;        
+                position: relative;
+                   
                 .username
                 {
                     display: flex;
@@ -923,10 +952,11 @@ body
                 .controls
                 {
                     position: absolute;
+                    z-index: 5;
                     font-size: 2rem;
                     width: 3rem;
                     height: 3rem;
-                    right: -4.5rem;
+                    right: -5rem;
                     top: 40%;
                     transform: translateX(-50%);
                     cursor: pointer;
@@ -949,6 +979,7 @@ body
                     .dropdown
                     {
                         position: absolute;
+                        z-index: 10;
                         bottom: -6rem;
                         width: 15rem;
                         height: 5rem;
@@ -983,6 +1014,11 @@ body
                             width: 100%;
                             padding: 0.5rem;
                             font-size: 1.5rem;
+                            &:hover 
+                            {
+                                background-color: rgb(245, 33, 33);
+                                color: #fff;
+                            }
                         }
                     }
                 }
@@ -1075,6 +1111,7 @@ body
                     text-overflow: ellipsis;
                 }
             }
+            
             a{
                 display: block;
               
@@ -1091,25 +1128,29 @@ body
 
 
 
-
 @media (max-width:1200px)
 {
     
     .top{
         padding:3rem !important;
      }
-  
+
      section{
         padding:0;
      }
-     .container-postdetail
+    //  .container-postdetail
+    // {
+    //     padding: 2rem 0 0;
+    // }
+    .sectionPostDetail
     {
-        padding: 2rem 5rem 0;
+        padding: 14rem 22% 5rem 0;
     }
 }
 
 @media (max-width:991px)
 {
+    
     html{
           font-size: 55%;       
         }
@@ -1124,41 +1165,17 @@ body
                  margin-right: 0.5rem;
              }
          
-            .navbar
-            {
-                position: absolute !important; 
-                top:110%; left:0; right:0 !important;
-                flex-direction: column;
-                background-color: #9FE2BF !important;
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                align-items: flex-start !important;
-                padding: 5rem 2rem;
-                border-radius: 1.5rem;
-                box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-                a{
-                    &:hover
-                    {
-                        letter-spacing: 1rem;
-                      
-                    }
-                }
-                &.active
-                {
-                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                    background-color: #fff;
-                }
-                .line
-                {
-                    display: none;
-                }
-            }
+            // .navbar
+            // {
+                
+            // }
             .control
             {     
                 gap:.5rem !important;
-                .btn-bars
-                {
-                    display: flex !important;
-                }
+                // .btn-bars
+                // {
+                //     display: flex !important;
+                // }
             }
         } 
         .container-login
@@ -1168,7 +1185,6 @@ body
         .container-register
         {
             padding-top: 5.5rem;
-
         }
         .container-postdetail
         {
@@ -1190,7 +1206,6 @@ body
                 }
             }
            
-
         }
         .icon-home-bars
     {
@@ -1221,6 +1236,25 @@ body
             border-radius: .5rem;
         }
 
+    }
+    .container-views
+    {
+        .box-post
+        {
+            align-items: center;
+            justify-content: center;
+            .content
+            {
+                .description-link
+                {
+                    display: none;
+                }
+            }
+        }
+    }
+    .sectionPostDetail
+    {
+        padding: 14rem 25% 5rem 10% !important;
     }
 }
 

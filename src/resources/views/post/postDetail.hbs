@@ -1,4 +1,24 @@
-<section class="section">
+<section class="sectionPostDetail">
+
+    <div class="containerMV_PostDetail">
+            <div class="title-box-cate">
+                <h4>Xem nhiều</h4>
+            </div>
+                {{#each posts}}
+                    
+                    <div class="boxMostView">
+                        <a href="/post/{{this.slug}}" class="image">
+                            <img src="/{{this.thumbnail}}" alt="">
+                        </a>
+                        <a href="/post/{{this.slug}}" class="title">
+                            <p> {{this.title}}</p>
+                        </a>
+                    </div>
+                    
+                {{/each}}
+            
+
+    </div>
     <div class="container-postdetail">
         <div class="post-header">
             <div class="date-create">
@@ -52,7 +72,7 @@
 
         <div class="comments-box">
             {{#each comments}}
-            <div class="box box-item-{{this._id}}">
+            <div class="box box-item-{{this._id}} boxhoverout">
                 <div class="avata">
                     <img src="/{{this.iduser.avatar}}" alt="cmtuser">
                 </div>
@@ -68,7 +88,7 @@
                     <button value="{{this.iduser.email}}" class="controls threedos-btn" id="{{this._id}}">
                         <i class="fa-solid fa-ellipsis"></i>
 
-                        <div class="dropdown" data-id="{{this._id}}">
+                        <div class="dropdown dropdownbox" data-id="{{this._id}}">
                             <div onclick="deletecmt(`{{this._id}}`)" class="delete">delete</div>
                         </div>
                     </button>

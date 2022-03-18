@@ -21,10 +21,13 @@ const PostController = {
 
             const comments = await CommentModel.find({ idpost: post._id }).populate('iduser idpost')
 
+            const posts = await PostModel.find({}).sort({views: -1}).limit(5)
+
             await res.render('post/postDetail', {
                 post: mongooseToObject(post),
                 postscates: mutipleMongooseToObject(postscates),
-                comments: mutipleMongooseToObject(comments)
+                comments: mutipleMongooseToObject(comments),
+                posts: mutipleMongooseToObject(posts),
             })
 
         } catch (error) {

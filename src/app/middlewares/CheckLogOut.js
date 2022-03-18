@@ -1,4 +1,4 @@
-
+const CategoryModel = require('../models/Category')
 class CheckLogOut {
 
     requiresLogout(req, res, next){
@@ -36,6 +36,7 @@ class CheckLogOut {
             res.redirect('/')
         }
     }
+   
 
 }
 

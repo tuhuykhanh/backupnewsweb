@@ -7,12 +7,12 @@
             <div class="container-bg-im">
                 <div class="background-image" style="background-image: url(/img/bg-home/wallpaper.jpg);">
                 </div>
-                {{!-- <div class="background-image">
+                <div class="background-image"style="background-image: url(/img/bg-home/wallpaper2.jpg);" >
                 </div>
-                <div class="background-image">
+                <div class="background-image" style="background-image: url(/img/bg-home/wallpaper3.jpg);">
                 </div>
-                <div class="background-image">
-                </div> --}}
+                <div class="background-image" style="background-image: url(/img/bg-home/wallpaper4.jpg);">
+                </div>
             </div>
             <div class="container-box">
 
@@ -49,6 +49,7 @@
         <div class="container-cate">
             <div class="categorys">
                 <ul class="list-category">
+                    
                     <h3>category: </h3>
 
                     <li class="item"><a href="/" class="icon-home-cate"><i class="fa-solid fa-house"></i></a></li>
@@ -56,6 +57,7 @@
                     <li class="item"><div class="icon-home-bars"><i class="fa-solid fa-bars"></i></div></li>
                     
                     <div class="container-li">
+                        
                          {{#each categorys}}
                         <li class="item li-child"> <a href="/c/{{this.slug}}/{{this._id}}">{{this.name}}</a> </li>
                         {{/each}}
@@ -67,7 +69,7 @@
         </div>
         {{!-- recent post --}}
         <section class="section " id="posts">
-            <div class="section-title ">
+            <div class="section-title">
                 <h2>Recent Posts</h2>
             </div>
             <div class="container-recent-post">
@@ -115,12 +117,12 @@
                             <span class="views">{{this.views}} views</span>
                 
                         </h4>
-                        <a href="/post/{{this.slug}}">
+                        <a class="title-link" href="/post/{{this.slug}}">
                             <h3 class="title">
                                 {{this.title}}
                             </h3>
                         </a>
-                        <a href="/post/{{this.slug}}">
+                        <a class="description-link" href="/post/{{this.slug}}">
                             <p class="description">
                                {{this.description}}
                             </p>
@@ -132,3 +134,4 @@
         </section>
     </div>
 </div>
+

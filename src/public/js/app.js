@@ -1,3 +1,16 @@
+$(document).ready(function () {
+    $('.container-home .home-page .background-header-slider .container-bg-im').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        fade: true,
+        arrows: false,
+        draggable: false
+    });
+});
 const hiddenblock = document.querySelector('.search-form-hidden')
 //header scroll 
 var lastscrolltop = 0;
@@ -6,6 +19,14 @@ var header = document.querySelector('.header .top')
 const scrollTopBtn = document.querySelector('.scrolltop')
 
 window.addEventListener('scroll', function () {
+    navbarscroll();
+    scrollToTopBtn();
+    mostViewsArea();
+
+
+})
+
+function navbarscroll (){
     let scrolltop = window.pageYOffset
 
     if (scrolltop > lastscrolltop) {
@@ -14,17 +35,40 @@ window.addEventListener('scroll', function () {
         header.style.top = '1rem';
     }
     lastscrolltop = scrolltop
-})
-
-window.addEventListener('scroll', function () {
+}
+function scrollToTopBtn(){
     let scrolltop = window.pageYOffset
     if (scrolltop > 600) {
         scrollTopBtn.classList.add('active')
     } else {
         scrollTopBtn.classList.remove('active')
     }
+}
+function mostViewsArea(){
 
-})
+    const boxMostView = document.querySelector('.containerMV_PostDetail')
+    const boxDetailPost =  document.querySelector('.container-postdetail')
+    if(boxDetailPost)
+    {
+        let scrolltop = window.pageYOffset
+        const height =  boxDetailPost.offsetHeight
+        const heightReal =  height - 120
+        if(scrolltop >= heightReal)
+        {
+            if(boxMostView)
+            {
+                boxMostView.classList.add('active')
+            }
+        }
+        else
+        {
+            if(boxMostView)
+            {
+                boxMostView.classList.remove('active')
+            }
+        }
+    }
+}
 
 
 //// HANDLE CLICK EVENT ////
@@ -38,25 +82,24 @@ barsbtn.onclick = () => {
 }
 
 //line slide
-const navbtn = document.querySelectorAll('.top .navbar a')
-const line = document.querySelector('.top .navbar .line')
-navbtn.forEach(item => {
-    item.onmousemove = (e) => {
+// const navbtn = document.querySelectorAll('.top .navbar a')
+// const line = document.querySelector('.top .navbar .line')
+// navbtn.forEach(item => {
+//     item.onmousemove = (e) => {
 
-        e.preventDefault()
-        line.style.left = item.offsetLeft + 'px';
-        line.style.width = item.offsetWidth + 'px';
-    }
-})
+//         e.preventDefault()
+//         line.style.left = item.offsetLeft + 'px';
+//         line.style.width = item.offsetWidth + 'px';
+//     }
+// })
 
 
-const categoryBtn = document.querySelector('.icon-home-bars')  ? document.querySelector('.icon-home-bars') : hiddenblock
+const categoryBtn = document.querySelector('.icon-home-bars') ? document.querySelector('.icon-home-bars') : hiddenblock
 
 const boxCate = document.querySelector('.container-li');
 
 
-categoryBtn.onclick =() => 
-{   
+categoryBtn.onclick = () => {
     boxCate.classList.toggle('active')
 }
 
@@ -64,44 +107,44 @@ categoryBtn.onclick =() =>
 //theme control
 
 // check for saved 'darkMode' in localStorage
-let darkMode = localStorage.getItem('darkMode'); 
+let darkMode = localStorage.getItem('darkMode');
 
 const darkModeToggle = document.querySelector('.interface');
 
 const enableDarkMode = () => {
-  // 1. Add the class to the body
-  document.body.classList.add('dark-mode');
-  // 2. Update darkMode in localStorage
-  localStorage.setItem('darkMode', 'enabled');
+    // 1. Add the class to the body
+    document.body.classList.add('dark-mode');
+    // 2. Update darkMode in localStorage
+    localStorage.setItem('darkMode', 'enabled');
 }
 
 const disableDarkMode = () => {
-  // 1. Remove the class from the body
-  document.body.classList.remove('dark-mode');
-  // 2. Update darkMode in localStorage 
-  localStorage.setItem('darkMode', null);
+    // 1. Remove the class from the body
+    document.body.classList.remove('dark-mode');
+    // 2. Update darkMode in localStorage 
+    localStorage.setItem('darkMode', null);
 }
- 
+
 // If the user already visited and enabled darkMode
 // start things off with it on
 if (darkMode === 'enabled') {
-  enableDarkMode();
+    enableDarkMode();
 }
 
 // When someone clicks the button
 darkModeToggle.addEventListener('click', () => {
-    
+
     darkModeToggle.classList.toggle('fa-sun')
-  // get their darkMode setting
-  darkMode = localStorage.getItem('darkMode'); 
-  
-  // if it not current enabled, enable it
-  if (darkMode !== 'enabled') {
-    enableDarkMode();
-  // if it has been enabled, turn it off  
-  } else {  
-    disableDarkMode(); 
-  }
+    // get their darkMode setting
+    darkMode = localStorage.getItem('darkMode');
+
+    // if it not current enabled, enable it
+    if (darkMode !== 'enabled') {
+        enableDarkMode();
+        // if it has been enabled, turn it off  
+    } else {
+        disableDarkMode();
+    }
 });
 
 
@@ -363,18 +406,11 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
     }
 }
 
-
 /////slick///
-// $(document).ready(function(){
-//     $('.container-home .home-page .background-header-slider .container-bg-im').slick({
-//         infinite: true,
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         autoplay: true,
-//         autoplaySpeed: 3000,
-//         arrows: false
-//     });
-//   });
+
+
+
+
 
 ///socket io 
 let socket = io()
@@ -388,11 +424,10 @@ const username = document.querySelector('.info-user .name') ? document.querySele
 const sendBtn = document.querySelector('.btn-send-comment') ? document.querySelector('.btn-send-comment') : hiddenblock;
 const commentBox = document.querySelector('.comments-box');
 
-const avatasrc = document.querySelector('.info-user .image img') ? document.querySelector('.info-user .image img').src.split('/').slice(3,5).join('/') : '';
+const avatasrc = document.querySelector('.info-user .image img') ? document.querySelector('.info-user .image img').src.split('/').slice(3, 5).join('/') : '';
 
-inputCmt.onclick =()=> {
-    if(username === '')
-    {
+inputCmt.onclick = () => {
+    if (username === '') {
         myFunction()
     }
 }
@@ -401,9 +436,9 @@ function myFunction() {
     if (confirm(text) == true) {
         window.location.href = 'http://localhost:3000/account/login'
     } else {
-      
+
     }
-    
+
 }
 
 sendBtn.onclick = (e) => {
@@ -411,8 +446,7 @@ sendBtn.onclick = (e) => {
     if (!comment) {
         return
     }
-    if(username === '')
-    {
+    if (username === '') {
         return
     }
     postComment(comment)
@@ -428,7 +462,7 @@ function postComment(cmt) {
     appendToDom(data)
     inputCmt.value = ''
     socketsendcmt(data)
-    
+
     syncWithDb(data)
 }
 function appendToDom(data) {
@@ -452,7 +486,7 @@ function appendToDom(data) {
                 </div> `
     box.innerHTML = html
     commentBox.appendChild(box)
-    
+
 }
 function socketsendcmt(data) {
     socket.emit('comment', data)
@@ -482,44 +516,55 @@ socket.on('usertyping', function (data) {
 })
 
 function syncWithDb(data) {
-    
+
     const headers = {
         'Content-Type': 'application/json'
     }
-    fetch('/api/comment', { method: 'Post', body:  JSON.stringify(data), headers})
+    fetch('/api/comment', { method: 'Post', body: JSON.stringify(data), headers })
         .then(response => response.json())
         .then(result => {
             console.log(result)
         })
-        .catch(err =>{
+        .catch(err => {
             console.log(err)
         })
 }
 
 
 
-           
+
 /// click delete comment
 
 const threedogs = document.querySelectorAll('.threedos-btn')
-const boxdrops = document.querySelectorAll('.dropdown')
+// const boxdrops = document.querySelectorAll('.dropdown')
 
-threedogs.forEach( result => {
-    
+
+
+
+threedogs.forEach(result => {
+
     const id = result.id
-    result.onclick =()=>{
-        if(result.value === email)
-        {   
-           const acc = document.querySelector(`div[data-id="${id}"]`)
-            if(acc)
-            {
+    const acc = document.querySelector(`div[data-id="${id}"]`)
+    result.onclick = () => {
+        if (result.value === email) {
+            if (acc) {
                 acc.classList.toggle('active')
-            }   
+            }
         }
     }
+    result.onmouseleave = () =>
+    {
+       
+        if(acc.classList.contains('active'))
+        {
+            acc.classList.remove('active')
+        }
+    }
+
 })
 
-const deletecmt = (id)=> {
+
+const deletecmt = (id) => {
 
     removeCmtFromDom(id)
     socketsenddelecmt(id)
@@ -527,25 +572,24 @@ const deletecmt = (id)=> {
 }
 
 function deleteCmtDb(id) {
-    
+
     const headers = {
         'Content-Type': 'application/json'
     }
-    fetch(`/api/deletecmt/${id}`, { method: 'Post', headers})
+    fetch(`/api/deletecmt/${id}`, { method: 'Post', headers })
         .then(response => response.json())
         .then(result => {
             console.log(result)
         })
-        .catch(err =>{
+        .catch(err => {
             console.log(err)
         })
 }
-function removeCmtFromDom(id){
+function removeCmtFromDom(id) {
 
     let boxCmt = document.querySelector(`.box-item-${id}`)
 
-    if(boxCmt)
-    {
+    if (boxCmt) {
         boxCmt.remove();
     }
 
@@ -553,7 +597,7 @@ function removeCmtFromDom(id){
 function socketsenddelecmt(id) {
     socket.emit('deletecomment', id)
 }
-socket.on('deletecommentserver' ,function(id){
+socket.on('deletecommentserver', function (id) {
     removeCmtFromDom(id)
 })
 

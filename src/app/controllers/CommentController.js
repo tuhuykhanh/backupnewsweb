@@ -16,7 +16,12 @@ const CommentController = {
            const { email , slug , comment } = req.body
             
            const user =await UserModel.findOne({email: email})
+
            const post =await PostModel.findOne({slug: slug})
+
+           await PostModel.updateOne({slug: slug},{
+                totalcmt: post.totalcmt + 1
+           })
 
            const newComment = new CommentModel({
             iduser: user._id,

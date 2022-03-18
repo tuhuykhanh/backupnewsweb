@@ -1,5 +1,6 @@
 const PostModel = require('../models/Post')
 const CategoryModel = require('../models/Category')
+const  CommentModel = require('../models/Comment')
 
 var fs = require('fs');
 
@@ -17,7 +18,7 @@ const HomeController = {
                 createdAt: -1
             }).populate('user')
             const category = await CategoryModel.find({})
-
+            
             const mostview = await PostModel.find({}).sort({views: -1}).limit(5)
             await res.render('home', {
                 posts: mutipleMongooseToObject(post),

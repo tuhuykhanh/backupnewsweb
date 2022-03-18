@@ -1,0 +1,64 @@
+
+.sectionPostDetail
+{
+    position: relative;
+
+    .containerMV_PostDetail
+    {
+        position: fixed;
+        right: 12.4rem;
+        top: 20rem;
+        &.active
+        {
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem; 
+        }
+        width: 300px;
+        height: fit-content;
+        .title-box-cate
+        {
+            width: fit-content;
+            text-align: left;
+            height: 3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--title-color);
+            h4{
+                font-size: 2rem;
+                color: var(--title-color);
+            }
+        }
+       
+        .boxMostView
+        {
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            .image
+            {
+                width: 300px;
+                overflow: hidden;
+                img{
+                    
+                    display: none;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .title
+            {
+                display: block;
+                color: black;
+                font-weight: normal;
+            
+                p
+                {   
+                    
+                    font-size: 1.4rem;         
+                }
+            }
+        }
+        
+    }
+}

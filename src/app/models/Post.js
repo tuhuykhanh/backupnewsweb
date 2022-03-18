@@ -42,6 +42,10 @@ const PostSchema = new Schema({
     date: {
         type: String,
         default: moment(Date.now()).format("MMM Do YY")
+    },
+    totalcmt: {
+        type: Number,
+        default: 0,
     }
 }, {
     timestamps: true,
