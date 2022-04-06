@@ -34,12 +34,13 @@ app.use(express.urlencoded({
     extended:true
   }))
 
+const data = process.env.DATA 
 app.use(session({
   secret: ' hard ',
   resave: true,
   saveUninitialized: false,
   store: MongoStore.create(
-    { mongoUrl: 'mongodb://localhost:27017/review_site_db' }
+    { mongoUrl: `${data}` }
     )
   }));
   

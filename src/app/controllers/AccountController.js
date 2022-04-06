@@ -31,12 +31,12 @@ const AccountController = {
 
             await User.updateOne({ _id: req.params.id }, {
                 username: username ? username : user.username,
-                avatar: (req.file) ? req.file.path.split('\\').slice(5, 7).join('/') : user.avatar,
+                avatar: (req.file) ? req.file.path.split('\\').slice(4, 7).join('/') : user.avatar,
                 address: address ? address : user.address,
             })
             req.session.user.username = username ? username : user.username,
             res.locals.lcuser.username = req.session.user.username
-            req.session.user.avatar = (req.file) ? req.file.path.split('\\').slice(5, 7).join('/') : user.avatar
+            req.session.user.avatar = (req.file) ? req.file.path.split('\\').slice(4, 7).join('/') : user.avatar
             req.session.user.address = address ? address : user.address,
             res.locals.lcuser = req.session.user
 

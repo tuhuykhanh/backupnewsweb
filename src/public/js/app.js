@@ -22,8 +22,6 @@ window.addEventListener('scroll', function () {
     navbarscroll();
     scrollToTopBtn();
     mostViewsArea();
-
-
 })
 
 function navbarscroll (){
@@ -31,8 +29,10 @@ function navbarscroll (){
 
     if (scrolltop > lastscrolltop) {
         header.style.top = "-10rem";
+        // addTransform()
     } else {
         header.style.top = '1rem';
+        // removeTransform()
     }
     lastscrolltop = scrolltop
 }
@@ -52,24 +52,34 @@ function mostViewsArea(){
     {
         let scrolltop = window.pageYOffset
         const height =  boxDetailPost.offsetHeight
-        const heightReal =  height - 120
+        const heightReal =  height - 300
         if(scrolltop >= heightReal)
         {
             if(boxMostView)
             {
-                boxMostView.classList.add('active')
+                // boxMostView.classList.add('active')
+                boxMostView.setAttribute('style','position: absolute; right: 12rem;bottom:2rem;width: 310px;height: fit-content;')
             }
         }
         else
         {
             if(boxMostView)
             {
-                boxMostView.classList.remove('active')
+                // boxMostView.classList.remove('active')
+                boxMostView.setAttribute('style','position: fixed; right: 12rem;w;idth: 310pxheight: fit-content;')
             }
         }
     }
 }
-
+function addTransform () {
+    const boxMostView = document.querySelector('.containerMV_PostDetail')
+    boxMostView.classList.add('transform')
+}
+function removeTransform () {
+    const boxMostView = document.querySelector('.containerMV_PostDetail')
+    if(boxMostView.classList.contains('transform'))
+        boxMostView.classList.remove('transform')
+}
 
 //// HANDLE CLICK EVENT ////
 

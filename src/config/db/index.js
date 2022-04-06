@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
 
+const data = process.env.DATA 
+
 async function connect(){
         try {
-            await mongoose.connect('mongodb://localhost:27017/review_site_db',{
+            await mongoose.connect(`${data}`,{
                 //  useCreateIndex:true,
                 // useUnifiedTopology: true,  
                 useNewUrlParser: true,

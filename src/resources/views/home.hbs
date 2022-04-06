@@ -5,42 +5,42 @@
         <div class="background-header-slider">
 
             <div class="container-bg-im">
-                <div class="background-image" style="background-image: url(/img/bg-home/wallpaper.jpg);">
+                <div class="background-image" style="background-image: url(/img/bg-home/dentho1.jpg);">
                 </div>
-                <div class="background-image"style="background-image: url(/img/bg-home/wallpaper2.jpg);" >
+                <div class="background-image"style="background-image: url(/img/bg-home/dentho2.jpg);" >
                 </div>
-                <div class="background-image" style="background-image: url(/img/bg-home/wallpaper3.jpg);">
+                <div class="background-image" style="background-image: url(/img/bg-home/dentho3.jpg);">
                 </div>
-                <div class="background-image" style="background-image: url(/img/bg-home/wallpaper4.jpg);">
+                <div class="background-image" style="background-image: url(/img/bg-home/dentho4.jpg);">
                 </div>
             </div>
             <div class="container-box">
 
-                <div class="box-item">
+                <div class="box-item" >
                     <div class="icon">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid fa-book"></i>
                     </div>
                     <div class="content">
-                        <h3>Our posts</h3>
-                        <a href="#posts">view more</a>
+                        <h3>Bài viết</h3>
+                        <a href="#posts">Xem thêm</a>
                     </div>
                 </div>
-                <div class="box-item">
+                <div class="box-item" >
                     <div class="icon">
                         <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="content">
-                        <h3>Our staff</h3>
-                        <a href="">view more</a>
+                        <h3>Bài viết xem nhiều</h3>
+                        <a href="#mostview">Xem thêm</a>
                     </div>
                 </div>
-                <div class="box-item">
+                <div class="box-item" >
                     <div class="icon">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid fa-location-arrow"></i>
                     </div>
                     <div class="content">
-                        <h3>Our address</h3>
-                        <a href="#footer">view more</a>
+                        <h3>Địa chỉ liên hệ</h3>
+                        <a href="#footer">Xem thêm</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             <div class="categorys">
                 <ul class="list-category">
                     
-                    <h3>category: </h3>
+                    <h3>Danh mục: </h3>
 
                     <li class="item"><a href="/" class="icon-home-cate"><i class="fa-solid fa-house"></i></a></li>
 
@@ -59,7 +59,7 @@
                     <div class="container-li">
                         
                          {{#each categorys}}
-                        <li class="item li-child"> <a href="/c/{{this.slug}}/{{this._id}}">{{this.name}}</a> </li>
+                        <li class="item li-child"> <a class="childcate" href="/c/{{this.slug}}/{{this._id}}">{{this.name}}</a> </li>
                         {{/each}}
                          
                     </div>
@@ -70,7 +70,7 @@
         {{!-- recent post --}}
         <section class="section " id="posts">
             <div class="section-title">
-                <h2>Recent Posts</h2>
+                <h2 >Recent Posts</h2>
             </div>
             <div class="container-recent-post">
                 {{#each posts}}
