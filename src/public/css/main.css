@@ -7,7 +7,8 @@
   --bgbody: #FBFBFF;
   --title-color: black;
   --textbodydetail: #6b7280;
-  --titlebodydetail: black; }
+  --titlebodydetail: black;
+  --textblackwhite: black; }
 
 .light-mode {
   --bgc: #E5E7E9;
@@ -18,7 +19,8 @@
   --bgc: #5D6D7E;
   --title-color: black;
   --textbodydetail: #b5c0d0;
-  --titlebodydetail: #fff; }
+  --titlebodydetail: #fff;
+  --textblackwhite: #fff; }
 
 .error {
   color: red;
@@ -1160,7 +1162,8 @@
         font-size: 2rem;
         color: var(--titlebodydetail); }
     .sectionPostDetail .containerMV_PostDetail .timeOpen {
-      font-size: 1.4rem; }
+      font-size: 1.4rem;
+      color: var(--textbodydetail); }
     .sectionPostDetail .containerMV_PostDetail .box-mostview-item {
       max-height: 340px;
       overflow-y: scroll;
@@ -1212,7 +1215,8 @@
   margin-bottom: 2rem;
   padding: 2rem;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  border-radius: .5rem; }
   .container-related .box-title .title {
     color: #772014;
     font-size: 2rem; }
@@ -1326,8 +1330,10 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     margin-right: .5rem; }
+    .header .top .logo a {
+      color: #8888f9; }
     .header .top .logo span {
-      color: #232323; }
+      color: var(--textblackwhite); }
   .header .top .search-form {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.6);
@@ -1420,6 +1426,8 @@ body {
     cursor: pointer; }
     .header .top .btn-bars:hover {
       background-color: orange; }
+    .header .top .btn-bars i {
+      color: var(--textblackwhite); }
   .header .top .control {
     display: flex;
     align-items: center;
@@ -1436,7 +1444,7 @@ body {
       .header .top .control .search-btn.active {
         animation: rotate .5s linear; }
       .header .top .control .search-btn i {
-        color: #7B241C; }
+        color: var(--textblackwhite); }
     .header .top .control .handle-logInOut {
       display: flex;
       gap: 0.5rem;
@@ -1524,12 +1532,13 @@ body {
           object-fit: cover; }
       .header .top .control .info-user .name {
         overflow: hidden; }
-        .header .top .control .info-user .name h3 {
+        .header .top .control .info-user .name .username {
           font-size: 1.5rem;
           font-weight: 500;
           overflow: hidden;
           white-space: nowrap;
-          text-overflow: ellipsis; }
+          text-overflow: ellipsis;
+          color: var(--textblackwhite); }
       .header .top .control .info-user .getemail {
         display: none; }
       .header .top .control .info-user:hover .info-user-control {
@@ -1701,7 +1710,7 @@ body {
       height: 5rem;
       border-radius: 5rem;
       font-size: 2.5rem;
-      border: 2px solid black;
+      border: 2px solid var(--textblackwhite);
       padding: 0 2rem;
       overflow: hidden;
       margin-bottom: 2rem; }
@@ -1709,7 +1718,8 @@ body {
         font-size: 2.5rem;
         height: 100%;
         flex: 1;
-        background-color: transparent; }
+        background-color: transparent;
+        color: var(--textblackwhite); }
   .container-search .content {
     width: 100%;
     background-color: #F0F1F3;
@@ -1781,7 +1791,8 @@ body {
     margin-bottom: 2rem;
     padding: 2rem;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    border-radius: .5rem; }
     .container-comment .box-title .title {
       color: #772014;
       font-size: 2rem; }

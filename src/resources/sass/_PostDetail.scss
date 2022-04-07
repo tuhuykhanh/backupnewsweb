@@ -122,6 +122,7 @@
         .timeOpen
         {
             font-size: 1.4rem;
+            color: var(--textbodydetail)
         }
        .box-mostview-item
        {
@@ -206,6 +207,7 @@
         padding: 2rem;
         display: flex;
         align-items:center;
+        border-radius: .5rem;
         .title
         {
             color:  #772014;
