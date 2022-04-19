@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const PostsModel = require('../models/Post')
 const CategoryModel = require('../models/Category')
+const CommentModel = require('../models/Comment')
 
 const bcrypt = require('bcrypt')
 const { mutipleMongooseToObject } = require('../../util/handleBlockHbs')
@@ -104,7 +105,7 @@ const AdminController = {
             categorys: categorys ? mutipleMongooseToObject(categorys) : '',
             layout: 'admin' })
     },
-    createPost: async (req,res,next) => {
+    createPost: async (req,res) => {
 
         try {
 
@@ -116,11 +117,10 @@ const AdminController = {
                 title: title.toLowerCase(), 
                 content,
                 description, 
-                thumbnail: (req.file) ? req.file.path.split('\\').slice(4,7).join('/') : 'img/thumbnail-post/defaultimg.jpg',
+                thumbnail: (req.file) ? req.file.path.split('\\').slice(4,8).join('/') : 'img/thumbnail-post/defaultimg.jpg',
                 category: category
 
             })
-
             await newPost.save()
             res.redirect('/admin/posts');
            
@@ -130,9 +130,11 @@ const AdminController = {
     },
     postDelete: async(req,res,next) =>{
         try{
- 
-            await PostsModel.deleteOne({_id: req.params.id})
- 
+            
+            const id  = req.params.id;
+            await CommentModel.deleteMany({idpost: id})
+            await PostsModel.deleteOne({_id: id})
+
              res.redirect('/admin/posts')
             
         } catch (error) {
@@ -173,7 +175,7 @@ const AdminController = {
              category = post.category
         if(req.file)
         {
-            var thumbnail = req.file.path.split('\\').slice(5,8).join('/')  
+            var thumbnail = req.file.path.split('\\').slice(4,8).join('/')  
         }else
         {
            var thumbnail = post.thumbnail         

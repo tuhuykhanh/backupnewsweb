@@ -159,7 +159,6 @@ darkModeToggle.addEventListener('click', () => {
 
 
 
-
 ///toast message
 function clickclick({ title = '', message = '', type = 'info', duration = 2000 }) {
     const main = document.querySelector('#toast')
